@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <title>Rakshabandhan Gallery</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -12,6 +16,9 @@
       padding: 0;
       color: #5a2a2a;
       text-align: center;
+      border: 10px double #ff85a2;
+      box-sizing: border-box;
+      position: relative;
     }
 
     nav {
@@ -35,6 +42,15 @@
       color: #e60073;
     }
 
+    .quote-banner {
+      background: #fff0f5;
+      padding: 10px;
+      color: #d6336c;
+      font-size: 1.3rem;
+      font-weight: bold;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
     .gallery {
       padding: 40px 20px;
     }
@@ -43,6 +59,8 @@
       font-size: 2.5rem;
       margin-bottom: 20px;
       color: #d6336c;
+      font-family: 'Pacifico', cursive;
+      text-shadow: 2px 2px #fff0f5;
     }
 
     .photo-frame {
@@ -50,27 +68,108 @@
       display: inline-block;
       border-radius: 20px;
       overflow: hidden;
-      box-shadow: 0 0 20px rgba(255, 182, 193, 0.4);
-      transition: transform 0.3s ease;
+      animation: glow 3s ease-in-out infinite alternate;
     }
 
     .photo-frame:hover {
       transform: scale(1.05);
-      box-shadow: 0 0 30px rgba(255, 99, 132, 0.5);
     }
 
     .photo-frame img {
       width: 300px;
       border-radius: 20px;
       transition: all 0.4s ease;
+      box-shadow: 0 0 20px rgba(255, 182, 193, 0.4);
     }
 
-    .gallery p {
-      margin-top: 20px;
+    @keyframes glow {
+      0% {
+        box-shadow: 0 0 20px rgba(255, 182, 193, 0.4);
+      }
+      100% {
+        box-shadow: 0 0 35px rgba(255, 99, 132, 0.8);
+      }
+    }
+
+    .typing-text {
+      display: inline-block;
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 3px solid pink;
+      animation: typing 4s steps(60, end), blink 0.8s infinite;
+      width: 0;
       font-size: 1.2rem;
+      max-width: 600px;
+      margin-top: 20px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent }
+    }
+
+    .download-btn {
+      margin-top: 30px;
+      padding: 10px 20px;
+      background: #ff85a2;
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: bold;
+      display: inline-block;
+      transition: background 0.3s ease;
+    }
+
+    .download-btn:hover {
+      background: #ff4d7d;
+    }
+
+    .form-section {
+      margin-top: 60px;
+      background: #fff0f5;
+      padding: 30px;
       max-width: 600px;
       margin-left: auto;
       margin-right: auto;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .form-section h2 {
+      font-family: 'Pacifico', cursive;
+      font-size: 1.8rem;
+      color: #d6336c;
+      margin-bottom: 15px;
+    }
+
+    .form-section textarea {
+      width: 100%;
+      padding: 10px;
+      font-size: 1rem;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      resize: none;
+    }
+
+    .form-section button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background: #ff5c8a;
+      color: white;
+      border: none;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .form-section button:hover {
+      background: #e6005c;
     }
 
     @media (max-width: 500px) {
@@ -81,31 +180,114 @@
       .gallery h1 {
         font-size: 2rem;
       }
+
+      .typing-text {
+        font-size: 1rem;
+        padding: 0 10px;
+      }
+
+      .form-section {
+        padding: 20px;
+      }
     }
 
+    /* Lantern Styles */
+    .lantern {
+      position: absolute;
+      width: 50px;
+      top: 10px;
+      z-index: 5;
+    }
 
+    .lantern.left {
+      left: 20px;
+    }
 
+    .lantern.right {
+      right: 20px;
+    }
+
+    /* Optional Floating Heart Effect */
+    .floating-hearts::before, .floating-hearts::after {
+      content: "💖";
+      font-size: 2rem;
+      position: fixed;
+      animation: float 6s infinite ease-in-out;
+      opacity: 0.6;
+    }
+
+    .floating-hearts::before {
+      left: 10%;
+      top: 50%;
+    }
+
+    .floating-hearts::after {
+      left: 80%;
+      top: 55%;
+      animation-delay: 2s;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) scale(1); opacity: 0.5; }
+      50% { transform: translateY(-100px) scale(1.2); opacity: 1; }
+      100% { transform: translateY(0) scale(1); opacity: 0.5; }
+    }
   </style>
 </head>
 <body>
 
+  <!-- Background Music -->
+  <audio autoplay loop>
+    <source src="rakhi-music.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- Lantern Decorations -->
+  <img src="rk.avif" class="lantern left" alt="Lantern">
+  <img src="lanterns.jpg" class="lantern right" alt="Lantern">
+
+  <!-- Optional Floating Hearts -->
+  <div class="floating-hearts"></div>
+
+  <!-- Navigation -->
   <nav>
     <a href="index.html">Home</a>
     <a href="gallery.html">Gallery</a>
     <a href="video.html">Video</a>
   </nav>
 
+  <!-- Banner -->
+  <div class="quote-banner">
+    "A bond that time cannot break – Happy Rakshabandhan!" 🪢
+  </div>
+
+  <!-- Main Gallery -->
   <section class="gallery">
     <h1>My Beautiful Sister 💕</h1>
 
     <div class="photo-frame">
-      <img src="WhatsApp Image 2025-08-05 at 11.31.05 PM.jpeg" alt="My Sister">
+      <img src="WhatsApp Image 2025-08-05 at 11.31.05 PM.jpeg" alt="My Sister" id="sisterPhoto">
     </div>
 
-    <p>
+    <p class="typing-text">
       Your smile lights up every room. You’re my inspiration, my best friend, and the most beautiful soul I know. 🌸
     </p>
+
+    <!-- Download Button -->
+    <a href="WhatsApp Image 2025-08-05 at 11.31.05 PM.jpeg" download="My_Sister_Photo.jpeg" class="download-btn">
+      Download Photo 📥
+    </a>
   </section>
+
+  <!-- Message Form -->
+  <div class="form-section">
+    <h2>💌 Write a Message for Your Sister</h2>
+    <form onsubmit="event.preventDefault(); alert('Your message has been submitted. Happy Rakshabandhan!'); this.reset();">
+      <textarea rows="5" placeholder="Dear sister, you mean the world to me..."></textarea>
+      <br>
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
 
 </body>
 </html>
