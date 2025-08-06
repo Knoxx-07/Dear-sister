@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<!-- saved from url=(0031)http://127.0.0.1:5500/home.html -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Happy Rakshabandhan</title>
   <style>
     * {
@@ -13,12 +13,29 @@
     }
 
     body {
-      background: linear-gradient(to right, magenta, pink, hotpink);
+      background: linear-gradient(to right, #ffafbd, #ffc3a0);
       color: #4b2e2e;
       display: flex;
       flex-direction: column;
       align-items: center;
       min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    #star-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: radial-gradient(white 1px, transparent 1px),
+                        radial-gradient(white 1px, transparent 1px);
+      background-size: 100px 100px;
+      background-position: 0 0, 50px 50px;
+      z-index: 0;
+      opacity: 0.1;
+      pointer-events: none;
     }
 
     nav {
@@ -29,6 +46,7 @@
       display: flex;
       justify-content: center;
       gap: 30px;
+      z-index: 10;
     }
 
     nav a {
@@ -46,6 +64,7 @@
     .hero {
       padding: 60px 20px;
       text-align: center;
+      z-index: 10;
     }
 
     .hero h1 {
@@ -135,6 +154,42 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
+    .scroll-letter {
+      background: #fff8f8;
+      border: 3px dashed #ff80aa;
+      padding: 25px;
+      margin: 40px auto;
+      max-width: 600px;
+      border-radius: 15px;
+      font-family: 'Brush Script MT', cursive;
+      font-size: 1.3rem;
+      line-height: 1.7;
+      color: #6a1b2f;
+      box-shadow: 0 0 20px rgba(255,192,203,0.4);
+      animation: fadeIn 1s ease forwards;
+    }
+
+    .memory-jar {
+      margin-top: 40px;
+      background: #ffeef2;
+      padding: 20px;
+      border-radius: 12px;
+      max-width: 500px;
+      box-shadow: 0 0 12px rgba(255,105,135,0.3);
+    }
+
+    .memory-jar h3 {
+      color: #d61c5a;
+      margin-bottom: 10px;
+    }
+
+    .memory-line {
+      font-style: italic;
+      font-size: 1.1rem;
+      color: #5c1a1a;
+      animation: fadeIn 1s ease forwards;
+    }
+
     .music-btn {
       position: fixed;
       bottom: 20px;
@@ -165,99 +220,107 @@
 </head>
 <body>
 
-  <!-- Navigation Bar -->
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="gallery.html">Gallery</a>
-    <a href="video.html">Video</a>
-  </nav>
+<div id="star-bg"></div>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <h1>Happy Rakshabandhan, Didi 🎁</h1>
-    <div class="rakhi-circle">राखी</div>
+<!-- Navigation -->
+<nav>
+  <a href="index.html">Home</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="video.html">Video</a>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero">
+  <h1>Happy Rakshabandhan, Didi 🎁</h1>
+  <div class="rakhi-circle">राखी</div>
+  <p>
+    You’re not just my sister — you're my biggest blessing, my cheerleader, and my forever friend.
+    Thank you for always being there for me. 🤗
+  </p>
+  <button onclick="showSurprise()">Open Surprise</button>
+
+  <!-- Surprise Popup -->
+  <div class="popup" id="popup">
+    <h2>You are my forever protector 💖</h2>
+    <div class="heart">💗</div>
+  </div>
+
+  <!-- Priceless Letter -->
+  <div class="scroll-letter">
+    <h3>My Letter to You ✍️</h3>
     <p>
-      You’re not just my sister — you're my biggest blessing, my cheerleader, and my forever friend.
-      Thank you for always being there for me. 🤗
+      Dear Didi,<br><br>
+      I may not say it often, but your presence is my power, your smile is my peace,
+      and your trust is my pride. In every high and low, I’ve felt your strength behind me —
+      like a shield I never had to ask for.<br><br>
+      Thank you for being the first person I ever admired and the one I’ll forever protect.
+      You are not just my sister; you’re a blessing stitched into the fabric of my soul.<br><br>
+      Happy Rakshabandhan! 💛<br>
+      Forever your little brother 💫
     </p>
-    <button onclick="showSurprise()">Open Surprise</button>
+  </div>
 
-    <!-- Surprise Popup -->
-    <div class="popup" id="popup">
-      <h2>You are my forever protector 💖</h2>
-      <div class="heart">💗</div>
-    </div>
-  </section>
+  <!-- Memory Jar -->
+  <div class="memory-jar">
+    <h3>Our Memory Jar 🎈</h3>
+    <div class="memory-line" id="memoryLine">"Tied my first rakhi on a pencil because my hand was too small."</div>
+  </div>
+</section>
 
-  <!-- Audio -->
-  <audio id="bgMusic" loop="">
-    <source src="Fulo-Ka-Taro-Ka.mp3" type="audio/mp3">
-    Your browser does not support the audio element.
-  </audio>
+<!-- Audio -->
+<audio id="bgMusic" loop>
+  <source src="Dhaagon Se Baandhaa-320kbps.mp3" type="audio/mp3" />
+  Your browser does not support the audio element.
+</audio>
 
-  <!-- Music Toggle Button -->
-  <button class="music-btn" onclick="toggleMusic()" id="musicBtn">🔈</button>
+<!-- Music Toggle Button -->
+<button class="music-btn" onclick="toggleMusic()" id="musicBtn">🔈</button>
 
-  <!-- JavaScript -->
-  <script>
-    function showSurprise() {
-      document.getElementById("popup").style.display = "block";
-    }
+<!-- Confetti (Optional Script) -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 
-    const bgMusic = document.getElementById("bgMusic");
-    const musicBtn = document.getElementById("musicBtn");
-    let isPlaying = false;
-
-    function toggleMusic() {
-      if (isPlaying) {
-        bgMusic.pause();
-        musicBtn.textContent = "🔈"; // Paused
-      } else {
-        bgMusic.play();
-        musicBtn.textContent = "🔊"; // Playing
-      }
-      isPlaying = !isPlaying;
-    }
-  </script>
-
-<!-- Code injected by live-server -->
 <script>
-	// <![CDATA[  <-- For SVG support
-	if ('WebSocket' in window) {
-		(function () {
-			function refreshCSS() {
-				var sheets = [].slice.call(document.getElementsByTagName("link"));
-				var head = document.getElementsByTagName("head")[0];
-				for (var i = 0; i < sheets.length; ++i) {
-					var elem = sheets[i];
-					var parent = elem.parentElement || head;
-					parent.removeChild(elem);
-					var rel = elem.rel;
-					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
-						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
-						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
-					}
-					parent.appendChild(elem);
-				}
-			}
-			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
-			var address = protocol + window.location.host + window.location.pathname + '/ws';
-			var socket = new WebSocket(address);
-			socket.onmessage = function (msg) {
-				if (msg.data == 'reload') window.location.reload();
-				else if (msg.data == 'refreshcss') refreshCSS();
-			};
-			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
-				console.log('Live reload enabled.');
-				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
-			}
-		})();
-	}
-	else {
-		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
-	}
-	// ]]>
+  function showSurprise() {
+    document.getElementById("popup").style.display = "block";
+    confetti({
+      particleCount: 200,
+      spread: 100,
+      origin: { y: 0.6 }
+    });
+  }
+
+  const bgMusic = document.getElementById("bgMusic");
+  const musicBtn = document.getElementById("musicBtn");
+  let isPlaying = false;
+
+  function toggleMusic() {
+    if (isPlaying) {
+      bgMusic.pause();
+      musicBtn.textContent = "🔈";
+    } else {
+      bgMusic.play();
+      musicBtn.textContent = "🔊";
+    }
+    isPlaying = !isPlaying;
+  }
+
+  const memories = [
+    "Tied my first rakhi on a pencil because my hand was too small.",
+    "You hid my exam results but still defended me at home 😂",
+    "We laughed till we cried watching that silly cartoon.",
+    "You taught me how to tie my shoelaces & handle heartbreak.",
+    "Every Rakhi is a reminder of your unconditional love.",
+    "No matter where I go, I carry your belief in me."
+  ];
+
+  let memIndex = 0;
+  setInterval(() => {
+    document.getElementById("memoryLine").textContent = memories[memIndex];
+    memIndex = (memIndex + 1) % memories.length;
+  }, 4000);
 </script>
 
+</body>
+</html>
 
-</body></html>
+
