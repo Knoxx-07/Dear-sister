@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<!-- saved from url=(0037)http://127.0.0.1:5500/conclusion.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <title>My Final Words for You</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #ffe0ec, #fff0f5);
+      color: #6a1b4d;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+      padding: 60px 20px;
+      position: relative;
+    }
+
+    h1 {
+      font-size: 3em;
+      color: #c2185b;
+      margin-bottom: 30px;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    p {
+      font-size: 1.4em;
+      line-height: 1.8;
+      animation: slideIn 2.5s ease-in-out;
+    }
+
+    .footer {
+      margin-top: 60px;
+      font-size: 1.2em;
+      color: #a64d79;
+      animation: fadeIn 3s ease-in-out;
+    }
+
+    .links {
+      margin-top: 40px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .links a {
+      text-decoration: none;
+      padding: 12px 25px;
+      border-radius: 25px;
+      background-color: #ff69b4;
+      color: white;
+      font-weight: bold;
+      transition: 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .links a:hover {
+      background-color: #d81b60;
+      transform: scale(1.05);
+    }
+
+    .back-home {
+      margin-top: 50px;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    .back-home a {
+      display: inline-block;
+      padding: 12px 30px;
+      background-color: #c2185b;
+      color: white;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      transition: all 0.3s ease;
+    }
+
+    .back-home a:hover {
+      background-color: #a51246;
+      transform: scale(1.05);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .floating-icons {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .icon {
+      position: absolute;
+      font-size: 24px;
+      opacity: 0.6;
+      animation: float 8s infinite ease-in-out;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+    }
+
+    .icon1 { left: 5%; animation-delay: 0s; }
+    .icon2 { left: 20%; animation-delay: 2s; }
+    .icon3 { left: 40%; animation-delay: 4s; }
+    .icon4 { left: 65%; animation-delay: 1s; }
+    .icon5 { left: 85%; animation-delay: 3s; }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Background Hearts & Sparkles -->
+  <div class="floating-icons">
+    <div class="icon icon1">💖</div>
+    <div class="icon icon2">✨</div>
+    <div class="icon icon3">🌟</div>
+    <div class="icon icon4">💗</div>
+    <div class="icon icon5">💞</div>
+  </div>
+
+  <div class="container">
+    <h1>💖 To My Dearest Sister 💖</h1>
+    <p>
+      I created this website not just to celebrate Rakshabandhan,<br>
+      but to remind you how deeply you're loved. ❤️
+      <br><br>
+      Every memory we've shared — every laugh, every silly fight — means the world to me.<br>
+      You've always been my strength, my guide, and my best friend.
+      <br><br>
+      On this Rakhi, I just want to say — I'll always be there for you. You're irreplaceable.
+    </p>
+
+    <div class="footer">
+      Forever your brother,<br>
+      ❤️ Akshat
+    </div>
+
+    <div class="links">
+      <a href="http://127.0.0.1:5500/index.html">🏠 Home</a>
+      <a href="http://127.0.0.1:5500/gallery.html">📸 Gallery</a>
+      <a href="http://127.0.0.1:5500/video.html">🎥 Video</a>
+      <a href="http://127.0.0.1:5500/review.html">📝 Review</a>
+    </div>
+
+    <div class="back-home">
+      <a href="http://127.0.0.1:5500/index.html">← Back to Home Page</a>
+    </div>
+  </div>
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+
+</body></html>
