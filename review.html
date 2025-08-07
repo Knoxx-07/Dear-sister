@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<!-- saved from url=(0033)http://127.0.0.1:5500/review.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <title>My Sister's Review 💕</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to bottom right, #fff0f5, #ffe6eb, #ffd1dc);
+      min-height: 100vh;
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    h1 {
+      font-size: 2.8em;
+      color: #c2185b;
+      text-align: center;
+      margin-bottom: 10px;
+      animation: fadeIn 1.5s ease;
+    }
+
+    .subtext {
+      font-size: 1.2em;
+      color: #880e4f;
+      margin-bottom: 30px;
+      text-align: center;
+      animation: slideIn 2s ease;
+    }
+
+    .review-box {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      padding: 30px;
+      width: 100%;
+      max-width: 600px;
+      position: relative;
+      z-index: 1;
+      animation: floatUp 1.5s ease;
+    }
+
+    label {
+      font-size: 1.1em;
+      color: #880e4f;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    textarea {
+      width: 100%;
+      border: 2px solid #ffc1e3;
+      border-radius: 15px;
+      padding: 12px;
+      font-size: 1em;
+      height: 120px;
+      resize: none;
+      transition: 0.3s;
+    }
+
+    textarea:focus {
+      border-color: #f06292;
+      outline: none;
+      box-shadow: 0 0 10px #f48fb1;
+    }
+
+    .submit-btn {
+      margin-top: 20px;
+      padding: 12px 28px;
+      background: linear-gradient(to right, #f06292, #ec407a);
+      border: none;
+      border-radius: 30px;
+      color: white;
+      font-size: 1.1em;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      animation: pulse 2s infinite;
+    }
+
+    .submit-btn:hover {
+      background: linear-gradient(to right, #e91e63, #d81b60);
+    }
+
+    .heart {
+      font-size: 2em;
+      text-align: center;
+      margin-top: 25px;
+      animation: bounce 2s infinite;
+    }
+
+    .submitted-review {
+      margin-top: 40px;
+      background: #fff8fa;
+      padding: 25px;
+      border-left: 6px solid #ff80ab;
+      border-radius: 15px;
+      font-size: 1.1em;
+      color: #4a0033;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      white-space: pre-wrap;
+      animation: typing 3s steps(60, end);
+      overflow: hidden;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    /* Modal Styles */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 100vw;
+      background: rgba(0,0,0,0.4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      text-align: center;
+      max-width: 400px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      animation: slideUp 0.4s ease;
+    }
+
+    .modal-content h2 {
+      color: #d81b60;
+      margin-bottom: 10px;
+    }
+
+    .modal-content p {
+      color: #880e4f;
+      font-size: 1em;
+      margin-bottom: 20px;
+    }
+
+    .close-btn {
+      padding: 8px 20px;
+      background: #f06292;
+      border: none;
+      color: white;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .close-btn:hover {
+      background: #e91e63;
+    }
+
+    /* Animations */
+    @keyframes floatHearts {
+      0% { transform: translateY(100vh) scale(1); opacity: 0.5; }
+      100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 0.2; }
+      50% { opacity: 1; }
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes slideIn {
+      0% { transform: translateY(30px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes floatUp {
+      from { transform: translateY(50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 2em; }
+      .subtext { font-size: 1em; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hearts -->
+  <div class="hearts-bg">
+    <script>
+      for (let i = 0; i < 20; i++) {
+        const span = document.createElement("span");
+        span.textContent = "💖";
+        span.style.position = "absolute";
+        span.style.left = Math.random() * 100 + "vw";
+        span.style.animation = `floatHearts ${Math.random() * 5 + 5}s linear infinite`;
+        span.style.fontSize = Math.random() * 20 + 20 + "px";
+        document.body.appendChild(span);
+      }
+    </script>
+  </div><span style="position: absolute; left: 97.3391vw; animation: 5.59047s linear 0s infinite normal none running floatHearts; font-size: 26.4141px;">💖</span><span style="position: absolute; left: 84.7253vw; animation: 5.95593s linear 0s infinite normal none running floatHearts; font-size: 26.8464px;">💖</span><span style="position: absolute; left: 54.3597vw; animation: 7.4662s linear 0s infinite normal none running floatHearts; font-size: 20.8106px;">💖</span><span style="position: absolute; left: 34.1204vw; animation: 8.84763s linear 0s infinite normal none running floatHearts; font-size: 29.5272px;">💖</span><span style="position: absolute; left: 15.381vw; animation: 6.93926s linear 0s infinite normal none running floatHearts; font-size: 32.2988px;">💖</span><span style="position: absolute; left: 17.9198vw; animation: 7.76045s linear 0s infinite normal none running floatHearts; font-size: 27.7962px;">💖</span><span style="position: absolute; left: 65.911vw; animation: 6.44073s linear 0s infinite normal none running floatHearts; font-size: 34.4172px;">💖</span><span style="position: absolute; left: 80.3334vw; animation: 6.009s linear 0s infinite normal none running floatHearts; font-size: 37.4984px;">💖</span><span style="position: absolute; left: 19.2879vw; animation: 5.37517s linear 0s infinite normal none running floatHearts; font-size: 28.7974px;">💖</span><span style="position: absolute; left: 60.3184vw; animation: 5.03686s linear 0s infinite normal none running floatHearts; font-size: 27.7316px;">💖</span><span style="position: absolute; left: 45.2775vw; animation: 9.68954s linear 0s infinite normal none running floatHearts; font-size: 38.0062px;">💖</span><span style="position: absolute; left: 73.3625vw; animation: 9.7762s linear 0s infinite normal none running floatHearts; font-size: 30.2277px;">💖</span><span style="position: absolute; left: 89.4851vw; animation: 6.30147s linear 0s infinite normal none running floatHearts; font-size: 20.6809px;">💖</span><span style="position: absolute; left: 23.6189vw; animation: 5.40718s linear 0s infinite normal none running floatHearts; font-size: 22.652px;">💖</span><span style="position: absolute; left: 26.6733vw; animation: 7.23265s linear 0s infinite normal none running floatHearts; font-size: 23.0452px;">💖</span><span style="position: absolute; left: 75.8318vw; animation: 6.40421s linear 0s infinite normal none running floatHearts; font-size: 27.0284px;">💖</span><span style="position: absolute; left: 85.2466vw; animation: 9.43577s linear 0s infinite normal none running floatHearts; font-size: 39.0562px;">💖</span><span style="position: absolute; left: 0.533379vw; animation: 7.43277s linear 0s infinite normal none running floatHearts; font-size: 37.4845px;">💖</span><span style="position: absolute; left: 25.6711vw; animation: 8.29788s linear 0s infinite normal none running floatHearts; font-size: 33.0869px;">💖</span><span style="position: absolute; left: 55.2909vw; animation: 5.17368s linear 0s infinite normal none running floatHearts; font-size: 25.2106px;">💖</span>
+
+  <!-- Sparkles -->
+  <div class="sparkles-bg">
+    <script>
+      for (let i = 0; i < 25; i++) {
+        const sparkle = document.createElement("div");
+        sparkle.style.left = Math.random() * 100 + "vw";
+        sparkle.style.top = Math.random() * 100 + "vh";
+        sparkle.style.animationDuration = (Math.random() * 5 + 5) + "s";
+        sparkle.style.position = "absolute";
+        sparkle.style.width = "6px";
+        sparkle.style.height = "6px";
+        sparkle.style.background = "#fff";
+        sparkle.style.borderRadius = "50%";
+        sparkle.style.animation = "blink 3s infinite ease-in-out";
+        document.body.appendChild(sparkle);
+      }
+    </script>
+  </div><div style="left: 66.2556vw; top: 42.9864vh; animation: 3s ease-in-out 0s infinite normal none running blink; position: absolute; width: 6px; height: 6px; background: rgb(255, 255, 255); border-radius: 50%;"></div><div style="left: 9.41484vw; top: 31.2414vh; animation: 3s ease-in-out 0s infinite normal none running blink; position: absolute; width: 6px; height: 6px; background: rgb(255, 255, 255); border-radius: 50%;"></div><div style="left: 33.6954vw; top: 50.4267vh; animation: 3s ease-in-out 0s infinite normal none running blink; position: absolute; width: 6px; height: 6px; background: rgb(255, 255, 255); border-radius: 50%;"></div><div style="left: 65.6882vw; top: 68.8486vh; animation: 3s ease-in-out 0s infinite normal none running blink; position: absolute; width: 6px; height: 6px; background: rgb(255, 255, 255); border-radius: 50%;"></div><div style="left: 61.6174vw; top: 27.7495vh; animation: 3s ease-in-out 0s infinite normal none running blink; position: absolute; width: 6px; height: 6px; background: rgb(255, 255, 255); border-radius: 50%;"></div><div style="left: 69.8175vw; top: 75.068vh; animation: 3s ease-in-out 0s infinite normal none running blink; position: absolute; width: 6px; height: 6px; background: rgb(255, 255, 255); border-radius: 50%;"></div><div style="left: 74.0133vw; top: 67.3782vh; animation: 3s ease-in-out 0s infinite normal none running blink; position: absolute; width: 6px; height: 6px; background: rgb(255, 255, 255); border-radius: 50%;"></div><div style="left: 92.9783vw; top: 38.8603vh; animation: 3s ease-in-out 0s infinite normal none running blink; position: absolute; width: 6px; height: 6px; background: rgb(255, 255, 255); border-radius: 50%;"></div><div style="left: 28.5762vw; top: 1.14394vh; animation: 3s ease-in-out 0s infinite normal none running blink; position: absolute; width: 6px; height: 6px; background: rgb(255, 255, 255); border-radius: 50%;"></div><div style="left: 82.0662vw; top: 39.0217vh; animation: 3s ease-in-out 0s infinite normal none running blink; position: absolute; width: 6px; height: 6px; background: rgb(255, 255, 255); border-radius: 50%;"></div><div style="left: 97.0765vw; top: 55.0143vh; animation: 3s ease-in-out 0s infinite normal none running blink; position: absolute; width: 6px; height: 6px; background: rgb(255, 255, 255); border-radius: 50%;"></div><div style="left: 92.5681vw; top: 12.9162vh; animation: 3s ease-in-out 0s infinite normal none running blink; position: absolute; width: 6px; height: 6px; background: rgb(255, 255, 255); border-radius: 50%;"></div><div style="left: 8.58422vw; top: 86.1552vh; animation: 3s ease-in-out 0s infinite normal none running blink; position: absolute; width: 6px; height: 6px; background: rgb(255, 255, 255); border-radius: 50%;"></div><div style="left: 10.9245vw; top: 68.1531vh; animation: 3s ease-in-out 0s infinite normal none running blink; position: absolute; width: 6px; height: 6px; background: rgb(255, 255, 255); border-radius: 50%;"></div><div style="left: 0.590244vw; top: 10.9866vh; animation: 3s ease-in-out 0s infinite normal none running blink; position: absolute; width: 6px; height: 6px; background: rgb(255, 255, 255); border-radius: 50%;"></div><div style="left: 5.37458vw; top: 87.9691vh; animation: 3s ease-in-out 0s infinite normal none running blink; position: absolute; width: 6px; height: 6px; background: rgb(255, 255, 255); border-radius: 50%;"></div><div style="left: 31.7559vw; top: 42.256vh; animation: 3s ease-in-out 0s infinite normal none running blink; position: absolute; width: 6px; height: 6px; background: rgb(255, 255, 255); border-radius: 50%;"></div><div style="left: 64.3729vw; top: 4.31345vh; animation: 3s ease-in-out 0s infinite normal none running blink; position: absolute; width: 6px; height: 6px; background: rgb(255, 255, 255); border-radius: 50%;"></div><div style="left: 15.8593vw; top: 42.0061vh; animation: 3s ease-in-out 0s infinite normal none running blink; position: absolute; width: 6px; height: 6px; background: rgb(255, 255, 255); border-radius: 50%;"></div><div style="left: 98.8897vw; top: 61.9775vh; animation: 3s ease-in-out 0s infinite normal none running blink; position: absolute; width: 6px; height: 6px; background: rgb(255, 255, 255); border-radius: 50%;"></div><div style="left: 5.02174vw; top: 27.5514vh; animation: 3s ease-in-out 0s infinite normal none running blink; position: absolute; width: 6px; height: 6px; background: rgb(255, 255, 255); border-radius: 50%;"></div><div style="left: 38.4446vw; top: 33.5041vh; animation: 3s ease-in-out 0s infinite normal none running blink; position: absolute; width: 6px; height: 6px; background: rgb(255, 255, 255); border-radius: 50%;"></div><div style="left: 97.6261vw; top: 17.4534vh; animation: 3s ease-in-out 0s infinite normal none running blink; position: absolute; width: 6px; height: 6px; background: rgb(255, 255, 255); border-radius: 50%;"></div><div style="left: 43.804vw; top: 41.9365vh; animation: 3s ease-in-out 0s infinite normal none running blink; position: absolute; width: 6px; height: 6px; background: rgb(255, 255, 255); border-radius: 50%;"></div><div style="left: 92.0627vw; top: 80.695vh; animation: 3s ease-in-out 0s infinite normal none running blink; position: absolute; width: 6px; height: 6px; background: rgb(255, 255, 255); border-radius: 50%;"></div>
+
+  <!-- Header -->
+  <h1>💬 From You to Me 💬</h1>
+  <p class="subtext">Hey sis, this page is just for you. Write anything sweet, funny, or heartfelt 💗</p>
+
+  <!-- Review Box -->
+  <div class="review-box">
+    <form id="reviewForm">
+      <label for="sisterReview">Write Your Message:</label>
+      <textarea id="sisterReview" placeholder="Your message means everything to me..." required=""></textarea>
+      <button type="submit" class="submit-btn">Send Review 💌</button>
+    </form>
+    <div class="heart">💕</div>
+    <div id="displayReview" class="submitted-review hidden"></div>
+  </div>
+
+  <!-- Modal Popup -->
+  <div id="successModal" class="modal">
+    <div class="modal-content">
+      <h2>Thank you! 💖</h2>
+      <p>Your beautiful message has been submitted!</p>
+      <button class="close-btn" onclick="closeModal()">Close</button>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('reviewForm');
+    const textarea = document.getElementById('sisterReview');
+    const display = document.getElementById('displayReview');
+    const modal = document.getElementById('successModal');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const review = textarea.value.trim();
+      if (review) {
+        display.textContent = `From Sister:\n"${review}"`;
+        display.classList.remove('hidden');
+        modal.classList.add('show');
+        textarea.value = '';
+      }
+    });
+
+    function closeModal() {
+      modal.classList.remove('show');
+    }
+  </script>
+
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+
+</body></html>
